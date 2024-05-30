@@ -1,8 +1,7 @@
-// views/servant_list_view.dart
-import 'package:fgo_app/views/servant_detail_screen.dart';
+import 'package:fgo_app/views/fgo/servant_detail_screen.dart';
 import 'package:flutter/material.dart';
-import '../models/servant.dart';
-import '../controllers/servant_controller.dart';
+import '../../models/servant.dart';
+import '../../controllers/servant_controller.dart';
 
 class ServantListScreen extends StatefulWidget {
   @override
@@ -22,12 +21,6 @@ class _ServantListScreenState extends State<ServantListScreen> {
 
   void _onSearchChanged() {
     _servantController.searchServants(_searchController.text);
-  }
-
-  @override
-  void dispose() {
-    _searchController.dispose();
-    super.dispose();
   }
 
   @override
@@ -88,6 +81,17 @@ class _ServantListScreenState extends State<ServantListScreen> {
           : Icon(Icons.image_not_supported),
       title: Text(servant.name),
       subtitle: Text(servant.className),
+      trailing: IconButton(
+        icon: Icon(
+          servant.isFavorite ? Icons.favorite : Icons.favorite_border,
+          color: servant.isFavorite ? Colors.red : null,
+        ),
+        onPressed: () {
+          setState(() {
+            _servantController.toggleFavorite(servant.id);
+          });
+        },
+      ),
       onTap: () {
         Navigator.push(
           context,

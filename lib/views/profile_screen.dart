@@ -71,121 +71,84 @@ class _ProfileScreenState extends State<ProfileScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
-        child: Stack(
-          children: [
-            Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  SizedBox(height: 50),
-                  Image.asset(
-                    'assets/fgo/fgo_icon.png',
-                    width: 180,
-                    height: 180,
-                  ),
-                  Text(
-                    "Hello, ${_username ?? ''}",
-                    style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(height: 40),
-                  SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      onPressed: _editUsername,
-                      style: ElevatedButton.styleFrom(
-                        padding: EdgeInsets.zero,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.zero,
-                          side: BorderSide.none,
-                        ),
-                        backgroundColor: Color.fromARGB(255, 187, 216, 240),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(15, 12, 0, 12),
-                        child: Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            'Edit Username',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 18,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: double.infinity,
-                    child: Container(
-                      height: 2.0,
-                      color: Colors.blue,
-                    ),
-                  ),
-                  SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      onPressed: _editPassword,
-                      style: ElevatedButton.styleFrom(
-                        padding: EdgeInsets.zero,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.zero,
-                          side: BorderSide.none,
-                        ),
-                        backgroundColor: Color.fromARGB(255, 187, 216, 240),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(15, 12, 0, 12),
-                        child: Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            'Edit Password',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 18,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: double.infinity,
-                    child: Container(
-                      height: 2.0,
-                      color: Colors.blue,
-                    ),
-                  ),
-                  SizedBox(height: 200),
-                ],
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              SizedBox(height: 50),
+              Image.asset(
+                'assets/fgo/fgo_icon.png',
+                width: 180,
+                height: 180,
               ),
-            ),
-            Positioned(
-              left: 0,
-              right: 0,
-              bottom: 20,
-              child: SizedBox(
+              Text(
+                "Hello, ${_username ?? ''}",
+                style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 40),
+              SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () => authController.logout(context),
+                  onPressed: _editUsername,
                   style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.all(12),
+                    padding: EdgeInsets.zero,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(4),
+                      borderRadius: BorderRadius.zero,
+                      side: BorderSide.none,
                     ),
-                    backgroundColor: Colors.red,
+                    backgroundColor: Color.fromARGB(255, 187, 216, 240),
                   ),
-                  child: Text(
-                    'Logout',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(15, 12, 0, 12),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Edit Username',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 18,
+                        ),
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-          ],
+              SizedBox(
+                width: double.infinity,
+                child: Container(
+                  height: 2.0,
+                  color: Colors.blue,
+                ),
+              ),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: _editPassword,
+                  style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.zero,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.zero,
+                      side: BorderSide.none,
+                    ),
+                    backgroundColor: Color.fromARGB(255, 187, 216, 240),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(15, 12, 0, 12),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Edit Password',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 18,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

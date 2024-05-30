@@ -50,7 +50,7 @@ class _CurrencyConversionScreenState extends State<CurrencyConversionScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Currency Converter',
+        title: Text('Currency Conversion',
             style: TextStyle(fontWeight: FontWeight.bold)),
         backgroundColor: Colors.blueAccent,
         foregroundColor: Colors.white,

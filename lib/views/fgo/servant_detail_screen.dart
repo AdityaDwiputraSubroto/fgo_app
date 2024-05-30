@@ -1,7 +1,7 @@
-// views/servant_detail_view.dart
 import 'package:flutter/material.dart';
-import '../controllers/servant_controller.dart';
-import '../models/servant.dart';
+import 'package:flutter/widgets.dart';
+import '../../controllers/servant_controller.dart';
+import '../../models/servant.dart';
 
 class ServantDetailScreen extends StatefulWidget {
   final int servantId;
@@ -17,10 +17,13 @@ class _ServantDetailScreenState extends State<ServantDetailScreen> {
   int _selectedAscension = 1;
   final double textSize = 16;
   final double titleSize = 19;
+  late int servantIndex;
+
   @override
   void initState() {
     super.initState();
     _controller.fetchServantDetail(widget.servantId);
+    servantIndex = _controller.getServantIndex(widget.servantId);
   }
 
   @override
@@ -30,7 +33,36 @@ class _ServantDetailScreenState extends State<ServantDetailScreen> {
         title: Text('Servant Detail',
             style: TextStyle(fontWeight: FontWeight.bold)),
         backgroundColor: Colors.blueAccent,
-        foregroundColor: Colors.white, // Ubah warna latar belakang appbar
+        foregroundColor: Colors.white,
+        actions: [
+          // IconButton(
+          //   icon: Icon(
+          //     ServantController.servants[servantIndex].isFavorite
+          //         ? Icons.favorite
+          //         : Icons.favorite_border,
+          //     color: ServantController.servants[servantIndex].isFavorite
+          //         ? Colors.red
+          //         : null,
+          //   ),
+          //   onPressed: () {
+          //     setState(() {
+          //       _controller.toggleFavorite(widget.servantId);
+          //     });
+          //   },
+          // )
+
+          Padding(
+            padding: EdgeInsets.only(right: 10),
+            child: Icon(
+              ServantController.servants[servantIndex].isFavorite
+                  ? Icons.favorite
+                  : Icons.favorite_border,
+              color: ServantController.servants[servantIndex].isFavorite
+                  ? Color.fromARGB(217, 228, 15, 0)
+                  : null,
+            ),
+          ),
+        ], // Ubah warna latar belakang appbar
       ),
       body: ValueListenableBuilder<bool>(
         valueListenable: _controller.isLoading,
@@ -91,8 +123,7 @@ class _ServantDetailScreenState extends State<ServantDetailScreen> {
                       ),
                       SizedBox(height: 16),
                       Card(
-                        color:
-                            Colors.blue[50], // Ubah warna latar belakang card
+                        color: Colors.blue[50],
                         child: ListTile(
                           title: Text(
                             servantDetail.name,
@@ -127,7 +158,7 @@ class _ServantDetailScreenState extends State<ServantDetailScreen> {
 
   Widget _buildInfoSection(String title, String content) {
     return Card(
-      color: Colors.blue[50], // Ubah warna latar belakang card
+      color: Colors.blue[50],
       margin: EdgeInsets.symmetric(vertical: 8),
       child: ListTile(
         title: Text(
@@ -141,7 +172,7 @@ class _ServantDetailScreenState extends State<ServantDetailScreen> {
 
   Widget _buildSkillsSection(String title, List<Skill> skills) {
     return Card(
-      color: Colors.blue[50], // Ubah warna latar belakang card
+      color: Colors.blue[50],
       margin: EdgeInsets.symmetric(vertical: 8),
       child: ExpansionTile(
         title: Text(
@@ -162,7 +193,7 @@ class _ServantDetailScreenState extends State<ServantDetailScreen> {
   Widget _buildNoblePhantasmsSection(
       String title, List<NoblePhantasm> noblePhantasms) {
     return Card(
-      color: Colors.blue[50], // Ubah warna latar belakang card
+      color: Colors.blue[50],
       margin: EdgeInsets.symmetric(vertical: 8),
       child: ExpansionTile(
         title: Text(

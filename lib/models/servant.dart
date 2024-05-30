@@ -3,12 +3,14 @@ class Servant {
   final String name;
   final String className;
   final String face;
+  bool isFavorite;
 
   Servant({
     required this.id,
     required this.name,
     required this.className,
     required this.face,
+    this.isFavorite = false,
   });
 
   factory Servant.fromJson(Map<String, dynamic> json) {
@@ -17,6 +19,7 @@ class Servant {
       name: json['name'],
       className: json['className'],
       face: json['face'] ?? '',
+      isFavorite: json['isFavorite'] ?? false,
     );
   }
 }

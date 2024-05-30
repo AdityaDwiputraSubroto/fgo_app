@@ -1,6 +1,7 @@
+import 'package:fgo_app/views/fgo/servant_navbar.dart';
 import 'package:flutter/material.dart';
 import 'package:fgo_app/views/currency_converter_screen.dart';
-import 'package:fgo_app/views/servant_list_screen.dart';
+import 'package:fgo_app/views/fgo/servant_list_screen.dart';
 import 'package:fgo_app/views/time_conversion_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -34,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ServantListScreen()),
+                  MaterialPageRoute(builder: (context) => ServantNavbar()),
                 );
               },
             ),

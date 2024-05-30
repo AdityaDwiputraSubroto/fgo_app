@@ -25,9 +25,9 @@ class RegisterScreen extends StatelessWidget {
                 Text(
                   'REGISTER',
                   style: TextStyle(
-                    fontSize: 35,
-                    fontWeight: FontWeight.bold,
-                  ),
+                      fontSize: 35,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blue[800]),
                 ),
                 SizedBox(height: 20),
                 Image.asset(

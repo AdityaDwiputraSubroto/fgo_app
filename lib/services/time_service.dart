@@ -8,6 +8,7 @@ class TimeConversionService {
       'WITA': 8,
       'WIT': 9,
       'London (GMT)': 0,
+      'London (BST)': 1,
       'JST': 9,
     };
 

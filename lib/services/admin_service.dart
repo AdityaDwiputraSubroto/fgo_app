@@ -8,7 +8,6 @@ class AdminService {
 
   String hashPassword(String password) {
     print("password : $password");
-    print("Bcrypt password : $password");
     return BCrypt.hashpw(password, BCrypt.gensalt());
   }
 

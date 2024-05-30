@@ -124,6 +124,10 @@ class AuthController {
   Future<void> register(
       BuildContext context, String username, String password) async {
     try {
+      bool _adminExist = await _adminService.checkAdminExist();
+      if (_adminExist) {
+        throw ("Already has an account");
+      }
       final response = await _adminService.register(username, password);
       if (response) {
         ScaffoldMessenger.of(context).showSnackBar(

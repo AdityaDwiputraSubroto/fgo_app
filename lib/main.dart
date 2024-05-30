@@ -1,6 +1,7 @@
 import 'package:fgo_app/views/currency_converter_screen.dart';
+import 'package:fgo_app/views/fgo/servant_navbar.dart';
 import 'package:fgo_app/views/initializer.dart';
-import 'package:fgo_app/views/servant_list_screen.dart';
+import 'package:fgo_app/views/fgo/servant_list_screen.dart';
 import 'package:fgo_app/views/time_conversion_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -40,6 +41,8 @@ class MyApp extends StatelessWidget {
       //home: CurrencyConverterScreen(),
       //home: TimeConversionScreen()
       //home: ServantListScreen()
+      //home: ServantNavbar()
+      //home: TimeConversionScreen(),
     );
   }
 }

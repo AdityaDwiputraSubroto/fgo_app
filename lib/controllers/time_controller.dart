@@ -2,47 +2,59 @@ import 'package:fgo_app/models/time_conversion.dart';
 import 'package:fgo_app/services/time_service.dart';
 import 'package:flutter/material.dart';
 
-class TimeConversionController extends ChangeNotifier {
-  TimeConversion _timeConversionModel = TimeConversion(
+class TimeConversionController {
+  ValueNotifier<TimeConversion> timeConversionModel =
+      ValueNotifier(TimeConversion(
     inputTime: DateTime.now(),
     inputTimeZone: 'WIB',
     outputTimeZone: 'WIB',
-  );
+  ));
 
-  DateTime get inputTime => _timeConversionModel.inputTime;
-  String get inputTimeZone => _timeConversionModel.inputTimeZone;
-  String get outputTimeZone => _timeConversionModel.outputTimeZone;
+  DateTime get inputTime => timeConversionModel.value.inputTime;
+  String get inputTimeZone => timeConversionModel.value.inputTimeZone;
+  String get outputTimeZone => timeConversionModel.value.outputTimeZone;
   DateTime get convertedTime => _getConvertedTime();
   String get formattedConvertedTime => _getFormattedConvertedTime();
   String get formattedInputTime => _getFormattedInputTime();
 
   void updateInputTime(DateTime time) {
-    _timeConversionModel.inputTime = time;
-    notifyListeners();
+    timeConversionModel.value = TimeConversion(
+      inputTime: time,
+      inputTimeZone: timeConversionModel.value.inputTimeZone,
+      outputTimeZone: timeConversionModel.value.outputTimeZone,
+    );
   }
 
   void updateInputTimeZone(String timeZone) {
-    _timeConversionModel.inputTimeZone = timeZone;
-    notifyListeners();
+    timeConversionModel.value = TimeConversion(
+      inputTime: timeConversionModel.value.inputTime,
+      inputTimeZone: timeZone,
+      outputTimeZone: timeConversionModel.value.outputTimeZone,
+    );
   }
 
   void updateOutputTimeZone(String timeZone) {
-    _timeConversionModel.outputTimeZone = timeZone;
-    notifyListeners();
+    timeConversionModel.value = TimeConversion(
+      inputTime: timeConversionModel.value.inputTime,
+      inputTimeZone: timeConversionModel.value.inputTimeZone,
+      outputTimeZone: timeZone,
+    );
   }
 
   void swapTimeZones() {
-    String temp = _timeConversionModel.inputTimeZone;
-    _timeConversionModel.inputTimeZone = _timeConversionModel.outputTimeZone;
-    _timeConversionModel.outputTimeZone = temp;
-    notifyListeners();
+    timeConversionModel.value = TimeConversion(
+      inputTime: timeConversionModel.value.inputTime,
+      inputTimeZone: timeConversionModel.value.outputTimeZone,
+      outputTimeZone: timeConversionModel.value.inputTimeZone,
+    );
   }
 
   DateTime _getConvertedTime() {
     return TimeConversionService.convertTime(
-        _timeConversionModel.inputTime,
-        _timeConversionModel.inputTimeZone,
-        _timeConversionModel.outputTimeZone);
+      timeConversionModel.value.inputTime,
+      timeConversionModel.value.inputTimeZone,
+      timeConversionModel.value.outputTimeZone,
+    );
   }
 
   String _getFormattedConvertedTime() {
@@ -56,13 +68,13 @@ class TimeConversionController extends ChangeNotifier {
   Future<void> selectTime(BuildContext context) async {
     final TimeOfDay? picked = await showTimePicker(
       context: context,
-      initialTime: TimeOfDay.fromDateTime(_timeConversionModel.inputTime),
+      initialTime: TimeOfDay.fromDateTime(timeConversionModel.value.inputTime),
     );
     if (picked != null) {
       updateInputTime(DateTime(
-        _timeConversionModel.inputTime.year,
-        _timeConversionModel.inputTime.month,
-        _timeConversionModel.inputTime.day,
+        timeConversionModel.value.inputTime.year,
+        timeConversionModel.value.inputTime.month,
+        timeConversionModel.value.inputTime.day,
         picked.hour,
         picked.minute,
       ));

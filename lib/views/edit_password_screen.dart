@@ -41,11 +41,6 @@ class _EditPasswordScreenState extends State<EditPasswordScreen> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 20),
-                Image.asset(
-                  'assets/login-illustration.png',
-                  height: 180,
-                ),
                 SizedBox(height: 50),
                 Form(
                   key: _formKey,

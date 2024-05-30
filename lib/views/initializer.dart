@@ -22,16 +22,19 @@ class _InitializerState extends State<Initializer> {
     final isAdminLoggedIn = await _authController.isLoggedIn();
 
     if (!isAdminExist) {
+      //if doesn't have account
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => RegisterScreen()),
       );
     } else if (!isAdminLoggedIn) {
+      // if not loggedin
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => LoginScreen()),
       );
     } else {
+      // if already loggedin
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => BottomNavbar()),

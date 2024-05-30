@@ -1,24 +1,23 @@
 import 'package:fgo_app/views/feedback_screen.dart';
+import 'package:fgo_app/views/fgo/servant_favorites.dart';
 import 'package:fgo_app/views/home_screen.dart';
-import 'package:fgo_app/views/logout_screen.dart';
+import 'package:fgo_app/views/fgo/servant_list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:fgo_app/views/profile_screen.dart';
 
-class BottomNavbar extends StatefulWidget {
+class ServantNavbar extends StatefulWidget {
   final int selectedIndex;
-  BottomNavbar({this.selectedIndex = 0});
+  ServantNavbar({this.selectedIndex = 0});
   @override
-  _BottomNavbarState createState() => _BottomNavbarState();
+  _ServantNavbarState createState() => _ServantNavbarState();
 }
 
-class _BottomNavbarState extends State<BottomNavbar> {
+class _ServantNavbarState extends State<ServantNavbar> {
   int _selectedIndex = 0;
 
   static List<Widget> _widgetOptions = <Widget>[
-    HomeScreen(),
-    FeedbackScreen(),
-    ProfileScreen(),
-    LogoutScreen(),
+    ServantListScreen(),
+    ServantFavoritesScreen(),
   ];
 
   @override
@@ -42,25 +41,16 @@ class _BottomNavbarState extends State<BottomNavbar> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
+            icon: Icon(Icons.list),
+            label: 'Servants',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.feedback),
-            label: 'Feedback',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle_sharp),
-            label: 'Profile',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.logout),
-            label: 'Logout',
+            icon: Icon(Icons.star),
+            label: 'Favorite',
           ),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.blue,
-        unselectedItemColor: const Color.fromARGB(255, 183, 212, 235),
         onTap: _onItemTapped,
       ),
     );

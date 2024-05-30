@@ -3,7 +3,7 @@ import 'package:path/path.dart';
 
 class DatabaseHelper {
   static Database? _database;
-  static const String dbName = 'fgo_app_test3.db';
+  static const String dbName = 'fgo_app_test5.db';
   static const String adminTable = 'admin';
   static const String favoritesTable = 'favorites';
 
@@ -44,6 +44,12 @@ class DatabaseHelper {
           )
         ''');
 
+          await db.execute('''
+          CREATE TABLE $favoritesTable(
+            id INTEGER PRIMARY KEY,
+            servantId INTEGER
+          )
+        ''');
           //   // Insert initial admin data
           //   await db.rawInsert('''
           //   INSERT INTO $adminTable(username, password)
